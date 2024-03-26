@@ -11,7 +11,7 @@
                 </nuxt-link>
             </div>
             <div class="col-lg-6">
-                <nuxt-link to="../buku">
+              <nuxt-link to="../buku">
                     <div class="card bg-buku rounded-5">
                         <div class="card-body">
                             <h2>Cari Buku</h2>
@@ -37,31 +37,13 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="line">
-    <div class="vl">
-    </div>
-    <div class="v2">
-        <hr>
+    <div class="line">
+      <statistik/>
     </div>
   </div>
 </template>
 
 <style scoped>
-.v2{
-    height: 3px;
-    width: 98%;
-    margin-left: 30px;
-    border-left: 3px solid black;
-    background-color: black;
-
-}
-.vl {
-    margin-top: 40px;
-    margin-left: 30px;
-  border-left: 3px solid black;
-  height: 400px;
-}
 .card {
     height: 250px;
     box-shadow: 1px 1px 10px #424242;
@@ -83,7 +65,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(221, 211, 65);
+  background-color:   #20D4BF;
 }
 .raccing1 {
   height: 200px;
@@ -92,9 +74,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(41, 240, 124);
+  background-color:   #20D4BF;
 }
 .card-body h2{
     color: white;
 }
 </style>
+

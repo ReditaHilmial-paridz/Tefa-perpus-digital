@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <h2 class="text-center my-4">BUKU</h2>
                 <div class="my-3">
-                    <input type="search" class="from-control rounded-5" placeholder="Mau baca apa hari ini?">
+                    <input type="search" class="form-control rounded-5" placeholder="Mau baca apa hari ini?">
                 </div>
                 <div class="my-3 text-muted">menampilkan 3 dart 3</div>
                 <div class="row">

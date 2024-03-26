@@ -1,5 +1,5 @@
 <template>
-    <div class="row p-3 bg-primary text-white">
+    <div class="row p-3 color text-white">
         <div class="col-lg-1">
             <img src="~/assets/img/smkn4.png" alt="logo smkn4" height="100px" width="100px">
         </div>
@@ -12,3 +12,8 @@
         </div>
     </div>
 </template>
+<style>
+.color{
+    background-color:  #08C09F;
+}
+</style>
