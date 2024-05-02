@@ -42,6 +42,9 @@
     </div>
   </div>
 </template>
+<script setup>
+  useHead({title:"Home / perpus-digital"})
+</script>
 
 <style scoped>
 .card {

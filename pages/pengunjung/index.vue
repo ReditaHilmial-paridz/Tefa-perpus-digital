@@ -40,7 +40,7 @@ const supabase = useSupabaseClient()
 const visitors = ref([])
 
 const getpengunjung = async () => {
-    const { data, error } = await supabase.form('pengunjung').select('*, keanggotaan(*), keperluan(*)')
+    const { data, error } = await supabase.form('pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
     if(data) visitors.value = data
 }
 

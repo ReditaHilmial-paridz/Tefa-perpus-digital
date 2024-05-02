@@ -1,25 +1,33 @@
 <template>
 <div>
-  <canvas id="myChart"></canvas>
+  <canvas id="statistik"></canvas>
 </div>
 </template>
+
 <script setup>
-import Chart from 'chart.js/auto';
+import Chart from 'chart.js/auto'
 
 const labels = [
   'january',
-  'febuari',
-  'maret',
+  'february',
+  'march',
   'april',
   'mei',
+  'june',
 ];
 const data ={
   labels:labels,
-  dataasets:[{
+  datasets:[{
     label: 'pengunjung',
-    backgroundColor:'rgb(255, 99, 132)',
-    borderColor:'rgb(255, 100, 132)',
-    data: [6, 8, 10, 9, 9,],
+    data: [6, 8, 10, 9, 9,3],
+    backgroundColor:[
+      'rgb(255, 99, 132)',
+      'rgb(255, 99, 132)',
+      'rgb(255, 99, 132)',
+      'rgb(255, 99, 132)',
+      'rgb(255, 99, 132)',
+      'rgb(255, 99, 132)'
+    ],
   }]
 };
 const  config ={
@@ -29,7 +37,7 @@ const  config ={
 };
 onMounted(()=>{
   const myChart = new Chart(
-    document.getElementById('myChart'),
+    document.getElementById('statistik'),
     config
   );
 })

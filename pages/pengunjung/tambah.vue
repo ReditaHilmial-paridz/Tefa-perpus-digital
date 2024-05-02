@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="text-center my-4">isi buku kunjungan</h2>
-                <form @submit.prevent="kirimdata">
+                <form @submit.prevent="kirimData">
                     <div class="mb-3">
                         <input v-model="form.nama" class="form-control form-control-lg rounded-5" type="text" placeholder="nama..."/>
                     </div>
@@ -13,7 +13,7 @@
                             <option v-for="(member, i) in members" :key="i" :value="member.id">{{ member.nama }}</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div v-if="form.keanggotaan == 2" class="mb-3">
                         <div class="row">
                             <div class="col-md-4">
                                 <select v-model="form.tingkat" class="form-control form-control-lg form-select rounded-5 mb-2">
@@ -50,7 +50,9 @@
                             <option v-for="(item, i) in objectives" :key="i" :value="item.id">{{ item.nama }}</option>
                         </select>
                     </div>
-                        <button type="submit" class="btn btn-dark btn-lg rounded-5 px-5">kirim</button>
+                        <NuxtLink to="../pengunjung">
+                            <button type="submit" class="btn btn-dark btn-lg rounded-5 px-5">kirim</button>
+                        </NuxtLink>
                 </form>
             </div>
         </div>
@@ -71,18 +73,18 @@ const form = ref({
     keperluan:"",
 });
 
-const kirimdata = async () => {
-    const { error } = await supabase.form('Pengunjung').insert([form.value])
-    if(!error) navigateTo('/pengunjung')
+const kirimData = async () => {
+    const { error } = await supabase.from("Pengunjung").insert([form.value])
+    if(!error) navigateTo("/pengunjung")
 };
 
 const getkeanggotaan = async () => {
-    const { data, error } = await supabase.form('keanggotaan').select('*')
+    const { data, error } = await supabase.from("keanggotaan").select("*")
     if(data) members.value = data
 };
 
 const getkeperluan = async () => {
-    const { data, error } = await supabase.form('keperluan').select('*')
+    const { data, error } = await supabase.from("keperluan").select("*")
     if(data) objectives.value = data
 };
 
@@ -91,3 +93,26 @@ onMounted(() => {
     getkeperluan();
 });
 </script>
+<style scoped>
+.btn{
+    background-color: aquamarine;
+}
+.nama{
+    background-color: bisque;
+}
+.keanggotaan{
+    background-color: azure;
+}
+.tingkat{
+    background-color: antiquewhite;
+}
+.jurusan{
+    background-color: aqua;
+}
+.kelas{
+    background-color: aqua;
+}
+.keperluan{
+    background-color: aqua;
+}
+</style>
