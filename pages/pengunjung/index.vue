@@ -32,6 +32,8 @@
         <NuxtLink to="/pengunjung/tambah">
             <button type="submit" class="btn btn-dark btn-lg rounded-5 px-5">kembali</button>
         </NuxtLink>
+           
+        
     </div>
 </template>
 <script setup>
@@ -39,12 +41,12 @@ const supabase = useSupabaseClient()
 
 const visitors = ref([])
 
-const getpengunjung = async () => {
-    const { data, error } = await supabase.form('pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
+const getPengunjung = async () => {
+    const { data, error } = await supabase.from('Pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
     if(data) visitors.value = data
 }
 
 onMounted(() => {
-    getpengunjung()
+    getPengunjung()
 })
 </script>
