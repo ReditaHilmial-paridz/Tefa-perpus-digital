@@ -27,13 +27,13 @@
       <div class="col-5">
         <div class="card1">
           <div class="raccing">
-            <h2>3 Pengunjung</h2>
+            <h2><span class="no">{{ jml_pengunjung }}</span> pengunjung</h2>
           </div>
         </div>
       </div>
       <div class="col-5">
         <div class="raccing1">
-          <h2>180 Buku</h2>
+          <h2><span class="no">{{ jml_buku }}</span> Buku</h2>
         </div>
       </div>
     </div>
@@ -43,7 +43,30 @@
   </div>
 </template>
 <script setup>
-  useHead({title:"Home / perpus-digital"})
+const supabase = useSupabaseClient()
+const jml_pengunjung = ref(0)
+const jml_buku = ref(0)
+
+async function getjml_pengunjung() {
+  const{ error , data, count } = await supabase
+  .from("Pengunjung")
+  .select('*', { count: 'exact' })
+  if (count) jml_pengunjung.value = count
+  
+}
+async function getjml_buku() {
+  const{ error , data, count } = await supabase
+  .from("Buku")
+  .select('*', { count: 'exact' })
+  if (count) jml_buku.value = count
+  
+}
+
+
+onMounted(() => {
+  getjml_pengunjung()
+  getjml_buku()
+})
 </script>
 
 <style scoped>
