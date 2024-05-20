@@ -32,18 +32,26 @@
   </template>
   
   <script setup>
-  const supabase = useSupabaseClient()
-  const keyword = ref("")
+  const supabase = useSupabaseClient();
+
   const books = ref([])
+
   const getBuku = async () => {
-    const { data, error} = await supabase.from('Buku').select('* kategori(*)')
-    if(data) books.value= data
+    const { data, error} = await supabase
+    .from('Buku')
+    .select(`*,kategori(*)`)
+    .ilike("judul", `%${keyword.value}%`);
+    if(data) books.value= data;
   
-  }
+  };
+
   onMounted(() => {
-    getBuku()
-  })
+    getBuku();
+  });
+
+  const keyword = ref("");
   </script>
+
   <style scoped>
   .card-body {
     width: 100%;
