@@ -27,7 +27,7 @@
       <div class="col-5">
         <div class="card1">
           <div class="raccing">
-            <h2><span class="no">{{ jml_pengunjung }}</span> pengunjung</h2>
+              <h2><span class="no">{{ jml_pengunjung }}</span> pengunjung</h2>
           </div>
         </div>
       </div>

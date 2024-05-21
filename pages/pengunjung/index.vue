@@ -4,9 +4,11 @@
             <div class="col-lg-12">
                 <h2 class="text-center my-4">riwayat kunjungan</h2>
                 <div class="my-3">
-                    <input type="search" class="form-control rounded-5" placeholder="Fiter...">
+                    <form  @submit.prevent="getBuku">
+                        <input v-model="keyword" type="search" class="form-control rounded-5" placeholder="Fiter...">
+                    </form>
                 </div>
-                 <div class="my-3 text-muted">menampilkan 1 drat</div>
+                <div class="my-3 text-muted">menampilkan daftar </div>
                  <table class="table">
                     <thead>
                         <tr>
@@ -32,8 +34,6 @@
         <NuxtLink to="/pengunjung/tambah">
             <button type="submit" class="btn btn-dark btn-lg rounded-5 px-5">kembali</button>
         </NuxtLink>
-           
-        
     </div>
 </template>
 <script setup>
@@ -45,8 +45,16 @@ const getPengunjung = async () => {
     const { data, error } = await supabase.from('Pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
     if(data) visitors.value = data
 }
+const getBuku = async () => {
+    const { data, error} = await supabase
+    .from('Pengunjung')
+    .select(`*,nama(*)`)
+    .ilike("judul", `%${keyword.value}%`);
+    if(data) books.value= data;
+};
 
 onMounted(() => {
     getPengunjung()
+    getBuku()
 })
 </script>

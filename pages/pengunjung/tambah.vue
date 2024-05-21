@@ -50,9 +50,10 @@
                             <option v-for="(item, i) in objectives" :key="i" :value="item.id">{{ item.nama }}</option>
                         </select>
                     </div>
-                       
-                            <button type="submit" class="btn btn-dark btn-lg rounded-5 px-5 abu">kirim</button>
-                       
+                            <button type="submit" class=" r btn btn-dark btn-lg rounded-5 px-5 abu">kirim</button>
+                            <nuxt-link to="/">
+                                <button type="submit" class=" n btn btn-dark btn-lg rounded-5 px-5 abu ">kembali</button>
+                            </nuxt-link>
                 </form>
             </div>
         </div>
@@ -120,5 +121,9 @@ onMounted(() => {
 }
 .abu{
     background-color: #d9d9d9;
+}
+.n{
+    position: fixed;
+    right: 30px;
 }
 </style>
