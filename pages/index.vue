@@ -75,13 +75,13 @@ onMounted(() => {
     box-shadow: 1px 1px 10px #424242;
 }
 .card.bg-pengunjung {
-    background-image: url('../assets/img/picture1.png');
+    background-image: url('../assets/img/Picture1.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
 }
 .card.bg-buku {
-    background: url('../assets/img/picture2.png') no-repeat center center;
+    background: url('../assets/img/Picture2.png') no-repeat center center;
     background-size: cover;
 }
 .raccing {
