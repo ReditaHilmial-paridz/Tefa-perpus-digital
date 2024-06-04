@@ -12,7 +12,7 @@
               />
             </form>
           </div>
-          <div class="my-3 text-muted">menampilkan 30 dari 30</div>
+          <div class="my-3 text-muted">menampilkan {{ books?.length }} dari {{ totalBuku }}</div>
           <div class="row justify-content-evenly">
             <div v-for="(buku, i) in books" :key="i" class="col-lg-2">
             <nuxt-link :to="`/buku/${buku.id}`">
@@ -34,7 +34,7 @@
   
   <script setup>
   const supabase = useSupabaseClient();
-
+  const totalBuku = ref(0);
   const books = ref([])
 
   const getBuku = async () => {
@@ -45,9 +45,14 @@
     if(data) books.value= data;
   
   };
+  const getTotalBuku = async () => {
+  const { count, error } = await supabase.from("Buku").select("*, kategori(*)", { count: 'exact', head: true });
+  if (count) totalBuku.value = count;
+};
 
   onMounted(() => {
     getBuku();
+    getTotalBuku();
   });
 
   const keyword = ref("");
