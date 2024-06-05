@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <h2 class="text-center my-4">riwayat kunjungan</h2>
                 <div class="my-3">
-                    <form  @submit.prevent="getBuku">
+                    <form  @submit.prevent="getTotal">
                         <input v-model="keyword" type="search" class="form-control rounded-5" placeholder="Filter...">
                     </form>
                 </div>
@@ -45,7 +45,7 @@ const getPengunjung = async () => {
     const { data, error } = await supabase.from('Pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
     if(data) visitors.value = data
 }
-const getBuku = async () => {
+const getTotal = async () => {
     const {data,error} = await supabase.from('Pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
         .ilike('nama', `%${keyword.value}%`)
     if(data) visitors.value = data
@@ -53,6 +53,6 @@ const getBuku = async () => {
 
 onMounted(() => {
     getPengunjung()
-    getBuku()
+    getTotal()
 })
 </script>
