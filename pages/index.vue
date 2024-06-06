@@ -24,12 +24,14 @@
     <h2 style="margin: 30px"><strong>STATISTIK</strong></h2>
   <div class="Container-fluid">
     <div class="row justify-content-evenly rounded-3">
-      <div class="col-5">
-        <div class="card1">
-          <div class="raccing">
-              <h2><span class="no">{{ jml_pengunjung }}</span> pengunjung</h2>
+      <div class="col-5 box">
+        <nuxtLink to="/pengunjung">
+            <div class="card1 col-10">
+            <div class="raccing ">
+                <h2><span class="no">{{ jml_pengunjung }}</span> pengunjung</h2>
+            </div>
           </div>
-        </div>
+          </nuxtLink>
       </div>
       <div class="col-5">
         <div class="raccing1">
@@ -86,12 +88,14 @@ onMounted(() => {
 }
 .raccing {
   height: 200px;
+
   box-shadow: 1px 1px 10px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color:   #20D4BF;
+  color: black;
 }
 .raccing1 {
   height: 200px;

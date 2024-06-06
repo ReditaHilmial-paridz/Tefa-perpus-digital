@@ -8,7 +8,7 @@
                         <input v-model="keyword" type="search" class="form-control rounded-5" placeholder="Filter...">
                     </form>
                 </div>
-                <div class="my-3 text-muted">menampilkan daftar </div>
+                <div class="my-3 text-muted">menampilkan {{ visitors?.length }} dari {{ totalRiwayat }}</div>
                  <table class="table">
                     <thead>
                         <tr>
@@ -40,6 +40,7 @@
 const supabase = useSupabaseClient()
 const keyword = ref('')
 const visitors = ref([])
+const totalRiwayat = ref(0);
 
 const getPengunjung = async () => {
     const { data, error } = await supabase.from('Pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
@@ -50,9 +51,16 @@ const getTotal = async () => {
         .ilike('nama', `%${keyword.value}%`)
     if(data) visitors.value = data
 }
+const getTotalRiwayat = async () => {
+    const { count, error } = await supabase
+    .from("Pengunjung")
+    .select(`*, keanggotaan(*), keperluan(*)`, { count: "exact", head: true });
+    if (count) totalRiwayat.value = count;
+};
 
 onMounted(() => {
     getPengunjung()
     getTotal()
+    getTotalRiwayat();
 })
 </script>
