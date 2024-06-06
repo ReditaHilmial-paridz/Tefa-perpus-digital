@@ -44,6 +44,7 @@ const totalRiwayat = ref(0);
 
 const getPengunjung = async () => {
     const { data, error } = await supabase.from('Pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
+    .order('id', { ascending: false })
     if(data) visitors.value = data
 }
 const getTotal = async () => {
